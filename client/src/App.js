@@ -8,9 +8,14 @@ import {
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import Auth from "./hoc/auth";
 
 function App() {
+  const Landing=Auth(LandingPage,null);
+  const Login=Auth(LoginPage,false);
+  const Register=Auth(RegisterPage,false);
   return (
+    
     <div className="App">
       
 <Router>
@@ -24,11 +29,11 @@ function App() {
           of them to render at a time
         */}
         <Routes>
-          <Route exact path="/" element={<LandingPage/>}/>
+          <Route exact path="/" element={<Landing/>}/>
           
-          <Route exact path="/login" element={<LoginPage/>}/>
+          <Route exact path="/login" element={<Login/>}/>
           
-          <Route exact path="/register" element={<RegisterPage/>}/>
+          <Route exact path="/register" element={<Register/>}/>
           
         </Routes>
       </div>
@@ -37,7 +42,7 @@ function App() {
   );
 }
 
- 
+
 
 // You can think of these components as "pages"
 // in your app.
